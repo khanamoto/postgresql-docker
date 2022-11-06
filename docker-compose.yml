@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  db:
+    build:
+      context: .
+      args:
+        - DB_LANG=ja_JP
+    container_name: mypostgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: password
+        POSTGRES_DB: shop
+
+volumes:
+  db_data:
